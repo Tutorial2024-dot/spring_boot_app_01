@@ -1,0 +1,36 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: HOTEL-SERVICE-APP
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/microservices
+    username: root
+    password: 7280
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update       # options: none, validate, update, create, create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    com.crudapp: DEBUG  # your base package
+
+eureka:
+    client:
+      register-with-eureka: true       # 👈 This will register your service with Eureka
+      fetch-registry: true             # 👈 Enables fetching registry information from Eureka Server
+      service-url:
+        defaultZone: http://localhost:8761/eureka/   # 👈 Eureka Server URL
+    instance:
+      prefer-ip-address: true
